@@ -1,9 +1,14 @@
 import React from 'react';
 import './App.css'
+import {FilterValuesType} from "./App";
+
+
 
 type TodoListPropsType = {
     title: string;
     tasks: Array<TaskType>
+    removeTask: (taskId: number) => void
+    changeFilter: (filter:FilterValuesType) => void
 }
 
 export type TaskType = {
@@ -11,26 +16,17 @@ export type TaskType = {
     title: string;
     isDone: boolean;
 }
-const TodoList = (props: TodoListPropsType) => {
 
-    // let tasksList;
-    // if(props.tasks.length === 0) {
-    //     tasksList = <span>Your task list is empty</span>
-    // } else {
-    //     tasksList = props.tasks.map((task:TaskType) => {
-    //         return (
-    //         <li>
-    //             <input type="checkbox" checked={task.isDone}/> <span>{task.title}</span>
-    //         </li>
-    //         )
-    //     })
-    // }
+const TodoList = (props: TodoListPropsType) => {
 
     let tasksList = props.tasks.length ?
         props.tasks.map((task:TaskType) => {
+            const removeTask = () => props.removeTask(task.id)
             return (
                 <li>
-                    <input type="checkbox" checked={task.isDone}/> <span>{task.title}</span>
+                    <input type="checkbox" checked={task.isDone}/>
+                    <span>{task.title}</span>
+                    <button onClick={removeTask}>x</button>
                 </li>
             )
         })
@@ -47,9 +43,9 @@ const TodoList = (props: TodoListPropsType) => {
                 {tasksList}
             </ul>
             <div>
-                <button>All</button>
-                <button>Active</button>
-                <button>Completed</button>
+                <button onClick={() => {props.changeFilter('all')}} >All</button>
+                <button onClick={() => {props.changeFilter('active')}} >Active</button>
+                <button onClick={() => {props.changeFilter('completed')}} >Completed</button>
             </div>
         </div>
     );
