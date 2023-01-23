@@ -6,3 +6,26 @@
 .App > div {
   margin-right: 50px;
 }
+
+.task {
+  font-weight: bold;
+}
+
+.task_completed {
+  text-decoration: line-through;
+}
+
+.active_btn {
+  background-color: gold;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.error_input {
+  border-color: red;
+  outline: none;
+}
+
+.error_text {
+  color: red;
+}

@@ -32,9 +32,6 @@ function App() {
         setTasks(tasks.filter(task => task.id !== taskId))
     }
 
-    // useEffect( () => {
-    //     console.log(tasks)
-    // }, [tasks])
 
     const [filter, setFilter] = useState<FilterValuesType>('all')
     const changeFilter = (filter:FilterValuesType) => {
@@ -45,7 +42,6 @@ function App() {
         const newTask: TaskType = {id: v1(), title: title, isDone: false}
         setTasks([newTask, ...tasks])
     }
-
     const filteredTasks = (tasks:Array<TaskType>, filter: FilterValuesType):Array<TaskType> => {
         switch (filter) {
             case 'active':
@@ -56,8 +52,11 @@ function App() {
                 return tasks
         }
     }
-
     const filteredTasksForRender = filteredTasks(tasks, filter)
+
+    const changeTaskStatus = (taskId: string, isDone: boolean) => {
+        setTasks(tasks.map((t) => t.id === taskId ? {...t, isDone: isDone} : t ))
+    }
 
     return (
         <div className='App'>
@@ -66,6 +65,8 @@ function App() {
                       removeTask={removeTask}
                       changeFilter={changeFilter}
                       addTask={addTask}
+                      changeTaskStatus={changeTaskStatus}
+                      filter={filter}
             />
             {/*<TodoList title={todoListTitle_2} tasks={tasks_2}/>*/}
         </div>
