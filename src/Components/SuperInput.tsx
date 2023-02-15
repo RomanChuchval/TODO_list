@@ -1,4 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
 
 
 export type SuperInputPropsType = {
@@ -28,16 +30,28 @@ export const SuperInput = (props: SuperInputPropsType) => {
             addTask();
         }
     }
+ const buttonClassName = {
+        maxWidth: '38px',
+        maxHeight: '38px',
+        minWidth: '38px',
+        minHeight: '38px'
+    }
 
     return (
         <div>
-            <input value={title}
-                   onChange={onChangeHandler}
-                   onKeyPress={onKeyPressHandler}
-                   className={error ? "error" : ""}
+            <TextField id="outlined-basic"
+                       label={error ? 'Title is required' : "Task title"}
+                       variant="outlined"
+                       value={title}
+                       onChange={onChangeHandler}
+                       onKeyPress={onKeyPressHandler}
+                       size='small'
+                       error={!!error}
             />
-            <button onClick={addTask}>+</button>
-            {error && <div className="error-message">{error}</div>}
+            <Button style={buttonClassName}
+                    onClick={addTask}
+                    variant="contained"
+                    size="small">+</Button>
         </div>
     );
 };
