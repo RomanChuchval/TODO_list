@@ -1,5 +1,8 @@
 
 .App {
+    background-color: gray;
+    min-height: 100vh;
+
   /*padding: 30px;*/
   /*display: flex;*/
 
