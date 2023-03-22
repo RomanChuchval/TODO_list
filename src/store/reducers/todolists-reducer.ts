@@ -1,4 +1,4 @@
-import {FilterValuesType, TodolistsType} from "../App";
+import {FilterValuesType, TodolistsType} from "../../App";
 import {v1} from "uuid";
 
 export type RemoveTodolistAT = {
@@ -52,7 +52,6 @@ export const todolistsReducer = (todolists: Array<TodolistsType> = initialState,
         case "CHANGE-TODOLIST-TITLE":
             return todolists.map(el => el.id === action.payload.todoListId
                 ? {...el, title: action.payload.newTodoListTitle} : el)
-
         default:
             return todolists
     }

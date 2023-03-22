@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, memo, useState} from 'react';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 
@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 export type SuperInputPropsType = {
     callback: (title: string) => void
 }
-export const SuperInput = (props: SuperInputPropsType) => {
+export const SuperInput = memo((props: SuperInputPropsType) => {
 
     let [title, setTitle] = useState("")
     let [error, setError] = useState<string | null>(null)
@@ -54,5 +54,5 @@ export const SuperInput = (props: SuperInputPropsType) => {
                     size="small">+</Button>
         </div>
     );
-};
+});
 

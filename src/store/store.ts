@@ -1,5 +1,5 @@
-import {tasksReducer} from './tasks-reducer';
-import {todolistsReducer} from './todolists-reducer';
+import {tasksReducer} from './reducers/tasks-reducer';
+import {todolistsReducer} from './reducers/todolists-reducer';
 import {combineReducers, legacy_createStore} from 'redux';
 
 // объединяя reducer-ы с помощью combineReducers,
