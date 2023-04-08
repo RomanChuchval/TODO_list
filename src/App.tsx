@@ -21,7 +21,7 @@ import {
 import {
     createTaskTC,
     deleteTaskTC,
-    updateTaskTC, updateTaskTitleTC
+    updateTaskTC,
 } from './state/tasks-reducer';
 import {useSelector } from 'react-redux';
 import { AppRootStateType, useAppDispatch} from './state/store';
@@ -52,11 +52,11 @@ function App() {
     }, []);
 
     const changeStatus = useCallback(function (id: string, status: TaskStatuses, todolistId: string) {
-        dispatch(updateTaskTC(todolistId, id, status));
+        dispatch(updateTaskTC(todolistId, id, {status}));
     }, []);
 
     const changeTaskTitle = useCallback(function (id: string, newTitle: string, todolistId: string) {
-        dispatch(updateTaskTitleTC(todolistId, id, newTitle));
+        dispatch(updateTaskTC(todolistId, id, {title: newTitle}));
     }, []);
 
     const changeFilter = useCallback(function (value: FilterValuesType, todolistId: string) {
